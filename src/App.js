@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import './index.css'
+import MahasiswaPage from './pages/Mahasiswa';
+import AdminPage from './pages/AdminPage';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Protected from './tools/protected';
+import LoginPage from './pages/LoginPage';
+import FailedReqPage from './pages/FailedReqPage';
+import { useState } from 'react';
 
 function App() {
+  const[IsLogin, setIsLogin] = useState(null)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Routes>
+          <Route path='/' element={<LoginPage setIsLogin={setIsLogin}/>}/>
+          <Route path='/admin' element={
+            <Protected IsLogin={IsLogin}>
+              <AdminPage />
+            </Protected>
+            }/>
+          <Route path='/mahasiswa' element={
+            <Protected IsLogin={IsLogin}>
+              <MahasiswaPage />
+            </Protected>
+            }/>
+            <Route path='/errorPage' element={<FailedReqPage/>}/>
+        </Routes>
+      </Router>
     </div>
   );
 }
