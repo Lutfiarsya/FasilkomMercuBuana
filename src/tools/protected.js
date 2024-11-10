@@ -5,7 +5,8 @@ const Protected = ({ IsLogin,children }) => {
     const navigate = useNavigate()
 
     if(!IsLogin){
-        return navigate('/errorPage', replace)
+        alert('anda harus login terlebih dahulu')
+        navigate('/errorPage')
     }else
     return children
     

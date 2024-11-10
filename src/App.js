@@ -15,14 +15,10 @@ function App() {
         <Routes>
           <Route path='/' element={<LoginPage setIsLogin={setIsLogin}/>}/>
           <Route path='/admin' element={
-            <Protected IsLogin={IsLogin}>
               <AdminPage />
-            </Protected>
             }/>
           <Route path='/mahasiswa' element={
-            <Protected IsLogin={IsLogin}>
               <MahasiswaPage />
-            </Protected>
             }/>
             <Route path='/errorPage' element={<FailedReqPage/>}/>
         </Routes>

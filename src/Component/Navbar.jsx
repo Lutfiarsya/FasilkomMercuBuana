@@ -5,15 +5,15 @@ const Navbar = () => {
         <nav className='flex flex-row justify-between w-full mt-2'>
             <img
             src={LogoMercu}
-            width={200}
-            height={200}
+            width={150}
+            height={150}
             className='ml-4'
             />
             {/* Profile Picture */}
                 <img
                 src={ProfilePicture}
-                width={75}
-                height={75}
+                width={50}
+                height={50}
                 className='rounded-full mr-4'
                 />
         </nav>

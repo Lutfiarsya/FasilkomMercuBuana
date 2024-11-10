@@ -40,21 +40,20 @@ const form = [
                     <h3 className="text-md italic ml-4">2023-2024</h3>
                     <button className="absolute right-4 bottom-2">Check Details</button>
                 </div>
-                <div className="flex flex-row mt-10 mx-1">
-                {form.map((items) => {
-                    return(
-                        <div key={items.id} className="w-[97%] flex justify-center">
-                            <div className="w-72 bg-white flex flex-col justify-evenly items-center h-72 rounded-md shadow-[4px_4px_8px_-4px_black] hover:scale-110 hover:cursor-pointer transition-all transform hover:shadow-[6px_6px_12px_-10px_black] ">
-                                <img
-                                src={items.image}
-                                width={150}
-                                height={150}
-                                />
-                                <h2 className="text-center mx-4 text-lg font-semibold text-[--primary-color]">{items.title}</h2>
-                            </div>
-                        </div>
-                    )
-                })}
+                <h1 className="ml-4 font-bold text-3xl mt-4 text-[--primary-color]">Form Pengajuan</h1>
+                <div className="flex flex-row mx-4 w-[97%] mt-2 h-72 items-center justify-between">
+                    {form.map((items) => {
+                        return(
+                                <div key={items.id} className="w-[280px] bg-white flex flex-col justify-evenly items-center h-[280px] rounded-md shadow-[4px_4px_10px_-3px_black] hover:scale-110 hover:cursor-pointer transition-all transform hover:shadow-[6px_6px_12px_-10px_black] ">
+                                    <img
+                                    src={items.image}
+                                    width={120}
+                                    height={120}
+                                    />
+                                    <h2 className="text-center mx-4 text-md font-semibold text-[--primary-color]">{items.title}</h2>
+                                </div>
+                        )
+                    })}
                 </div>
             </div>
         </div>
