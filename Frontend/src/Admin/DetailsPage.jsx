@@ -5,8 +5,9 @@ import MPTI from '../Assets/presentation.png'
 import TA from '../Assets/student.png'
 import TP from '../Assets/learning.png'
 import { useState } from "react"
-import Input from "../Utilities/input"
 import Table from "../Component/TableMahasiswa/Table"
+import { House, MagnifyingGlass } from "@phosphor-icons/react"
+import { useNavigate } from "react-router-dom"
 
 
 const form = [
@@ -40,11 +41,18 @@ const form = [
 
 const DetailsPage = () => {
 const [services, setServices] = useState('MBKM');
+const [filter, setFilter] = useState('');
+const navigate = useNavigate()
+
 
 
 
 const handleClick = (item) => {
     setServices(item)
+}
+
+const ClickNavigate = () => {
+    navigate('/admin')
 }
 
 
@@ -53,7 +61,9 @@ const handleClick = (item) => {
         <div className="font-['Poppins']">
             <Navbar/>
             <div className="w-full h-[200px] flex flex-col items-center justify-between mt-8">
-                <div className="w-full flex flex-row justify-evenly items-center">
+                <div className="flex flex-col w-full">
+                    <House size={25} weight="fill" color='var(--primary-color)' onClick={ClickNavigate} className="absolute  right-6 top-[72px] hover:cursor-pointer"/>
+                    <div className="w-full flex flex-row justify-evenly items-center mt-4">
                     {form.map((items) => {
                             return(
                             <div className="w-[300px] h-[150px] bg-[--primary-color] shadow-[4px_4px_5px_-4px_black] justify-between flex flex-col rounded-lg">
@@ -76,6 +86,7 @@ const handleClick = (item) => {
                     )
                     })}
                 </div>
+                </div>
                 <div className="mt-6 w-full flex flex-col justify-center items-center">
                     <div className="w-[97%] h-10 flex flex-row justify-between items-center border-b-2 relative border-gray-500">
                         <div className="w-[40%]  h-10 flex justify-between  flex-row items-center text-gray-500 font-regular border-gray-500">
@@ -89,12 +100,19 @@ const handleClick = (item) => {
                                 )
                             })}
                         </div>
-                        <div className="w-[40%] justify-end flex">
-                            <Input/>
+                        <div className="w-[40%] justify-end flex relative">
+                        <input className="bg-gray-300 w-[300px] rounded-md h-8 px-2 text-[12px] italic font-['Poppins']"
+                            placeholder="Nama, NIM, Dosen Pembimbing"
+                            onChange={(e) => setFilter(e.target.value)}
+                            value={filter}
+                            />
+                            <MagnifyingGlass size={20}
+                            className="absolute right-2 top-[6px]"
+                            />
                         </div>
                     </div>
-                    <div className="w-[97%] bg-green-300 m-auto items-center font-regular flex justify-center mt-6">
-                        <Table category={services}/>
+                    <div className="w-[97%] m-auto items-center font-regular flex justify-center mt-6">
+                        <Table category={services} filter={filter}/>
                     </div>
                 </div>
             </div>
