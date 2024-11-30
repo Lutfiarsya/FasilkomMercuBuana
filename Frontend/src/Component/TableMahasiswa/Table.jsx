@@ -1,12 +1,18 @@
 import { useState } from "react"
 
-const Table = ({category}) => {
+const Table = ({category, filter}) => {
 
     const data = {
         "MBKM": [
           { 'NIM': '14145141', 'Nama': 'Nama 1', 'Angkatan': '2021', 'DosenPembimbing': 'Dosen 1', 'TanggalUpload': '2023-01-01' },
           { 'NIM': '14145142', 'Nama': 'Nama 2', 'Angkatan': '2020', 'DosenPembimbing': 'Dosen 2', 'TanggalUpload': '2023-01-02' },
           { 'NIM': '14145145', 'Nama': 'Nama 3', 'Angkatan': '2020', 'DosenPembimbing': 'Dosen 3', 'TanggalUpload': '2023-01-02' },
+          { 'NIM': '14145159', 'Nama': 'Nama 4', 'Angkatan': '2020', 'DosenPembimbing': 'Dosen 3', 'TanggalUpload': '2023-01-02' },
+          { 'NIM': '14145155', 'Nama': 'Nama 5', 'Angkatan': '2020', 'DosenPembimbing': 'Dosen 3', 'TanggalUpload': '2023-01-02' },
+          { 'NIM': '14145156', 'Nama': 'Nama 6', 'Angkatan': '2020', 'DosenPembimbing': 'Dosen 3', 'TanggalUpload': '2023-01-02' },
+          { 'NIM': '14145157', 'Nama': 'Nama 7', 'Angkatan': '2020', 'DosenPembimbing': 'Dosen 3', 'TanggalUpload': '2023-01-02' },
+          { 'NIM': '14145157', 'Nama': 'Nama 7', 'Angkatan': '2020', 'DosenPembimbing': 'Dosen 3', 'TanggalUpload': '2023-01-02' },
+          { 'NIM': '14145157', 'Nama': 'Nama 7', 'Angkatan': '2020', 'DosenPembimbing': 'Dosen 3', 'TanggalUpload': '2023-01-02' },
         ],
         "MPTI": [
           { "NIM": '14145146', "Nama": 'Nama 3', "Angkatan": '2021', "DosenPembimbing": 'Dosen 3', "TanggalUpload": '2023-01-03' },
@@ -20,12 +26,17 @@ const Table = ({category}) => {
       };
 
 const selectedData = data[category]
-console.log(selectedData)
+
+const filteredData = selectedData?.filter((items) =>
+    Object.values(items).some((val) =>
+      String(val).toLowerCase().includes(filter.toLowerCase())
+    )
+  );
 
     return(
-        <div className="w-full flex items-center text-center justify-center">
-            <table className="w-full table-auto text-white text-center font-['Poppins'] shadow-[4px_4px_5px_-4px_black]">
-                <thead className="text-center">
+        <div className="w-full flex  items-center text-center max-h-[280px] justify-center h-full overflow-y-auto">
+            <table className="w-full table-auto border-collapse  text-white text-center font-['Poppins'] shadow-[4px_4px_5px_-4px_black]">
+                <thead className="text-center sticky top-0">
                     <tr className="bg-[--primary-color] px-2 h-10 ">
                         <th className="border-x-1 border-white">NIM</th>
                         <th>Nama</th>
@@ -35,8 +46,8 @@ console.log(selectedData)
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody className="text-center ">
-                    {selectedData?.map((items, index) => {
+                <tbody className="text-center overflow-y-auto">
+                    {filteredData?.map((items, index) => {
                         return(
                         <tr className="bg-white text-black px-2 h-10" key={index}>
                             <td>{items.NIM}</td>
