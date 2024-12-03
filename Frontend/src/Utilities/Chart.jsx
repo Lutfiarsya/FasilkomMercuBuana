@@ -26,7 +26,7 @@ const PieChart = () => {
     return(
         <Pie
         data={{
-          labels: ['MBKM', 'Tugas Akhir', 'Tugas Penelitian', 'MPTI'],
+          labels: ['MBKM', 'Tugas Akhir', 'Kerja Praktik', 'MPTI'],
           datasets: [
             {
               data: result,
