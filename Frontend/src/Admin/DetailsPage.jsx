@@ -8,6 +8,7 @@ import { useState } from "react"
 import Table from "../Component/TableMahasiswa/Table"
 import { House, MagnifyingGlass } from "@phosphor-icons/react"
 import { useNavigate } from "react-router-dom"
+import InputSearch from "../Utilities/inputSearch"
 
 
 const form = [
@@ -33,10 +34,34 @@ const form = [
     {
         id: 4,
         image: TP,
-        title: "Tugas Penelitian",
+        title: "Kerja Praktik",
         total: 30
     }
 ]
+
+
+const data = {
+    "MBKM": [
+      { 'NIM': '14145141', 'Nama': 'Nama 1', 'Angkatan': '2021', 'DosenPembimbing': 'Dosen 1', 'TanggalUpload': '2023-01-01' },
+      { 'NIM': '14145142', 'Nama': 'Nama 2', 'Angkatan': '2020', 'DosenPembimbing': 'Dosen 2', 'TanggalUpload': '2023-01-02' },
+      { 'NIM': '14145145', 'Nama': 'Nama 3', 'Angkatan': '2020', 'DosenPembimbing': 'Dosen 3', 'TanggalUpload': '2023-01-02' },
+      { 'NIM': '14145159', 'Nama': 'Nama 4', 'Angkatan': '2020', 'DosenPembimbing': 'Dosen 3', 'TanggalUpload': '2023-01-02' },
+      { 'NIM': '14145155', 'Nama': 'Nama 5', 'Angkatan': '2020', 'DosenPembimbing': 'Dosen 3', 'TanggalUpload': '2023-01-02' },
+      { 'NIM': '14145156', 'Nama': 'Nama 6', 'Angkatan': '2020', 'DosenPembimbing': 'Dosen 3', 'TanggalUpload': '2023-01-02' },
+      { 'NIM': '14145157', 'Nama': 'Nama 7', 'Angkatan': '2020', 'DosenPembimbing': 'Dosen 3', 'TanggalUpload': '2023-01-02' },
+      { 'NIM': '14145157', 'Nama': 'Nama 7', 'Angkatan': '2020', 'DosenPembimbing': 'Dosen 3', 'TanggalUpload': '2023-01-02' },
+      { 'NIM': '14145157', 'Nama': 'Nama 7', 'Angkatan': '2020', 'DosenPembimbing': 'Dosen 3', 'TanggalUpload': '2023-01-02' },
+    ],
+    "MPTI": [
+      { "NIM": '14145146', "Nama": 'Nama 3', "Angkatan": '2021', "DosenPembimbing": 'Dosen 3', "TanggalUpload": '2023-01-03' },
+    ],
+    'Tugas Akhir': [
+      { "NIM": '14145149', "Nama": 'Nama 4', "Angkatan": '2022', "DosenPembimbing": 'Dosen 4', "TanggalUpload": '2023-01-04' },
+    ],
+    'Kerja Praktik': [
+      { "NIM": '14145192', "Nama": 'Nama 5', "Angkatan": '2023', "DosenPembimbing": 'Dosen 5', "TanggalUpload": '2023-01-05' },
+    ],
+  };
 
 
 const DetailsPage = () => {
@@ -90,7 +115,7 @@ const ClickNavigate = () => {
                 <div className="mt-6 w-full flex flex-col justify-center items-center">
                     <div className="w-[97%] h-10 flex flex-row justify-between items-center border-b-2 relative border-gray-500">
                         <div className="w-[40%]  h-10 flex justify-between  flex-row items-center text-gray-500 font-regular border-gray-500">
-                            {['MBKM', 'MPTI', 'Tugas Akhir', 'Tugas Penelitian'].map((items) => {
+                            {['MBKM', 'MPTI', 'Tugas Akhir', 'Kerja Praktik'].map((items) => {
                                 return(
                                     <div className="flex flex-row text-center">
                                         <button onClick={() => handleClick(items)} type="button"
@@ -101,18 +126,14 @@ const ClickNavigate = () => {
                             })}
                         </div>
                         <div className="w-[40%] justify-end flex relative">
-                        <input className="bg-gray-300 w-[300px] rounded-md h-8 px-2 text-[12px] italic font-['Poppins']"
-                            placeholder="Nama, NIM, Dosen Pembimbing"
-                            onChange={(e) => setFilter(e.target.value)}
-                            value={filter}
-                            />
+                            <InputSearch setFilter={setFilter} filter={filter}/>
                             <MagnifyingGlass size={20}
                             className="absolute right-2 top-[6px]"
                             />
                         </div>
                     </div>
                     <div className="w-[97%] m-auto items-center font-regular flex justify-center mt-6">
-                        <Table category={services} filter={filter}/>
+                        <Table category={services} filter={filter} data={data} Judul1={"NIM"} Judul2={"Nama"} Judul3={"Angkatan"} Judul4={'Dosen Pembimbing'} Judul5={'Tanggal Upload'} Judul6={'Action'}/>
                     </div>
                 </div>
             </div>
