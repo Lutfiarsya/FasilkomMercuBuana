@@ -11,21 +11,11 @@ import { useNavigate } from "react-router-dom";
 
 
 
-const data = {
-    admin:{
-        username : "admin",
-        password : 'admin1234'
-    },
-    mahasiswa:{
-        NIM : "41524010185",
-        password : 'lutfiarsya34'
-    }
-}
-
-console.log(data.mahasiswa.NIM)
 
 
-const LoginPage = ({setIsLogin}) => {
+
+
+const LoginPage = ({setIsLogin, usnMahasiswa, pwMahasiswa, usnAdmin, pwAdmin, usnDosen, PwDosen}) => {
 const [username, setUsername] = useState('')
 const [password, setPassword] = useState('')
 const navigate = useNavigate()
@@ -37,13 +27,17 @@ const handleKey = (event) => {
 }
 
 const handleClick = (event) => {
-    if(username == data.admin.username && password == data.admin.password){
+    if(username == usnAdmin && password == pwAdmin){
         navigate('/admin')
         setIsLogin(true)
-    }else if(username == data.mahasiswa.NIM && password == data.mahasiswa.password){
+    }else if(username == usnMahasiswa && password == pwMahasiswa){
         navigate('/mahasiswa')
         setIsLogin(true)
-    }else{
+    }else if(username == usnDosen && password == PwDosen){
+        navigate('/dosen')
+        setIsLogin(true)
+    }
+    else{
         alert('Password salah')
     }
     setUsername('')
@@ -66,7 +60,7 @@ const handleClick = (event) => {
               <div className=" flex flex-col h-[45%]  justify-around relative">
                 <div className="relative">
                     <User size={21} className="absolute top-[12px] left-3"/>
-                    <input onKeyDown={handleKey} value={username} onChange={(e) => setUsername(e.target.value)} placeholder="NIM" className="w-[400px] h-[40px] h-12 px-10 rounded-md placeholder-italic text-md font-['Poppins'] shadow-[4px_4px_8px_-4px_black]"/>
+                    <input onKeyDown={handleKey} value={username} onChange={(e) => setUsername(e.target.value)} placeholder="NIM / Username" className="w-[400px] h-[40px] h-12 px-10 rounded-md placeholder-italic text-md font-['Poppins'] shadow-[4px_4px_8px_-4px_black]"/>
                 </div>
                 <div className="relative">
                     <Lock size={21} className="absolute top-[12px] left-3"/>
