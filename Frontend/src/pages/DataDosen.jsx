@@ -1,8 +1,11 @@
 import Navbar from "../Component/Navbar";
+import Table from "../Component/TableMahasiswa/Table";
+import InputSearch from "../Utilities/inputSearch";
+import { useState } from "react";
 
 const DataDosen = () => {
-    const data = {
-        "DataDosen": [
+  const [filter, setFilter] = useState('');
+    const data =  [
           { 'NID': '14145141', 'Nama': 'Nama 1', 'Departemen': 'Teknik Informatika', 'Keahlian': 'CyberSecurity' },
           { 'NID': '14145142', 'Nama': 'Nama 2', 'Departemen': 'Teknik Informatika', 'Keahlian': 'CyberSecurity' },
           { 'NID': '14145145', 'Nama': 'Nama 3', 'Departemen': 'Teknik Informatika', 'Keahlian': 'CyberSecurity' },
@@ -16,8 +19,7 @@ const DataDosen = () => {
           { 'NID': '14145157', 'Nama': 'Nama 7', 'Departemen': 'Sistem Informasi',   'Keahlian': 'Data Science' },
           { 'NID': '14145157', 'Nama': 'Nama 7', 'Departemen': 'Sistem Informasi',   'Keahlian': 'Data Science' },
           { 'NID': '14145157', 'Nama': 'Nama 7', 'Departemen': 'Sistem Informasi',   'Keahlian': 'Data Science' },
-        ]
-      };
+        ];
 
 
 
@@ -27,33 +29,12 @@ const DataDosen = () => {
             <div className="w-[95%] h-12 border-b-2 border-gray-400 flex items-center justify-center pb-4 mt-12">
             <h1 className="text-5xl font-semibold text-[--primary-color]">Dosen Fakultas Ilmu Komputer</h1>
             </div>
-            <div>
-
+            <div className="w-[95%] mt-6 mb-2 flex justify-end">
+                <InputSearch setFilter={setFilter} filter={filter}/>
             </div>
             <div className="relative w-[95%] max-h-[450px] overflow-y-auto border border-gray-300">
-  <table className="w-full table-auto border-collapse">
-    <thead>
-      <tr className="bg-[--primary-color] h-12 sticky top-0 z-10 text-white">
-        <th className="px-4">NID</th>
-        <th className="px-4">Nama</th>
-        <th className="px-4">Departemen</th>
-        <th className="px-4">Keahlian</th>
-        <th className="px-4">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      {data.DataDosen.map((items, index) => (
-        <tr key={index} className="bg-white text-black h-12 border-t">
-          <td className="px-4">{items.NID}</td>
-          <td className="px-4">{items.Nama}</td>
-          <td className="px-4">{items.Departemen}</td>
-          <td className="px-4">{items.Keahlian}</td>
-          <td className="px-4">Coming soon</td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-</div>
+              <Table Judul1={'NID'} Judul2={'Nama'} Judul3={'Departemen'} Judul4={'Keahlian'} Judul5={'Details'} data={data} filter={filter}/>
+            </div>
         </div>
     )
 }
