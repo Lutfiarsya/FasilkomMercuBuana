@@ -32,7 +32,7 @@ const form = [
     {
         id: 4,
         image: TP,
-        title: "Tugas Penelitian",
+        title: "Kerja Praktik",
         total: 30
     }
 ]
