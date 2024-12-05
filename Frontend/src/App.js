@@ -7,14 +7,27 @@ import LoginPage from './pages/LoginPage';
 import FailedReqPage from './pages/FailedReqPage';
 import { useState } from 'react';
 import DetailsPage from './Admin/DetailsPage';
+import PageMBKM from './pages/Services/MbkmPage';
+import DataDosen from './pages/DataDosen';
+import NotFound from './pages/NotFound';
+import Profile from './pages/Profile';
+import PageMPTI from './pages/Services/MPTIPage';
+import DosenPage from './pages/DosenPage';
+import PageTugasAkhir from './pages/Services/TugasAkhirPage';
+import PageKerjaPraktik from './pages/Services/KerjaPraktikPage';
 
 function App() {
-  const[IsLogin, setIsLogin] = useState(null)
+const[IsLogin, setIsLogin] = useState(null)
+const userAccess = JSON.parse(process.env.REACT_APP_USERS);
+const admin = userAccess.admin
+const mahasiswa = userAccess.mahasiswa
+const dosen = userAccess.dosen
+
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route path='/' element={<LoginPage setIsLogin={setIsLogin}/>}/>
+          <Route path='/'  element={<LoginPage setIsLogin={setIsLogin} dosenUser={dosen} mahasiswaUser={mahasiswa} adminUser={admin} />}/>
           <Route path='/admin' element={
             <Protected IsLogin={IsLogin}>
               <AdminPage />
@@ -22,7 +35,7 @@ function App() {
             }/>
           <Route path='/mahasiswa' element={
             <Protected IsLogin={IsLogin}>
-              <MahasiswaPage />
+              <MahasiswaPage  />
             </Protected>
             }/>
             <Route path='/errorPage' element={<FailedReqPage/>}/>
@@ -31,6 +44,42 @@ function App() {
               <DetailsPage />
             </Protected>
             }/>
+            <Route path='/mahasiswa/form-MBKM' element={
+            <Protected IsLogin={IsLogin}>
+              <PageMBKM />
+            </Protected>
+            }/>
+            <Route path='/mahasiswa/form-MPTI' element={
+            <Protected IsLogin={IsLogin}>
+              <PageMPTI />
+            </Protected>
+            }/>
+            <Route path='/mahasiswa/form-tugas-akhir' element={
+            <Protected IsLogin={IsLogin}>
+              <PageTugasAkhir />
+            </Protected>
+            }/>
+            <Route path='/mahasiswa/form-kerja-praktik' element={
+            <Protected IsLogin={IsLogin}>
+              <PageKerjaPraktik />
+            </Protected>
+            }/>
+            <Route path='/data-dosen' element={
+            <Protected IsLogin={IsLogin}>
+              <DataDosen />
+            </Protected>
+            }/>
+            <Route path='/profile/:username' element={
+            <Protected IsLogin={IsLogin}>
+              <Profile />
+            </Protected>
+            }/>
+            <Route path='/dosen' element={
+            <Protected IsLogin={IsLogin}>
+              <DosenPage />
+            </Protected>
+            }/>
+            <Route path='*' element={<NotFound/>}/>
         </Routes>
       </Router>
     </div>
