@@ -15,10 +15,11 @@ import { useNavigate } from "react-router-dom";
 
 
 
-const LoginPage = ({setIsLogin, usnMahasiswa, pwMahasiswa, usnAdmin, pwAdmin, usnDosen, PwDosen}) => {
+const LoginPage = ({setIsLogin, adminUser, mahasiswaUser, dosenUser}) => {
 const [username, setUsername] = useState('')
 const [password, setPassword] = useState('')
 const navigate = useNavigate()
+
 
 const handleKey = (event) => {
     if(event.key === 'Enter'){
@@ -27,13 +28,13 @@ const handleKey = (event) => {
 }
 
 const handleClick = (event) => {
-    if(username == usnAdmin && password == pwAdmin){
+    if(username == adminUser.username && password == adminUser.password){
         navigate('/admin')
         setIsLogin(true)
-    }else if(username == usnMahasiswa && password == pwMahasiswa){
+    }else if(username == mahasiswaUser.username && password == mahasiswaUser.password){
         navigate('/mahasiswa')
         setIsLogin(true)
-    }else if(username == usnDosen && password == PwDosen){
+    }else if(username == dosenUser.username && password == dosenUser.password){
         navigate('/dosen')
         setIsLogin(true)
     }
