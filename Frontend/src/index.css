@@ -12,6 +12,14 @@
     
 }
 
+table{
+    table-layout: fixed;
+}
+
+select{
+    appearance: none;
+}
+
 body{
     overflow-y: hidden;
 }
@@ -26,4 +34,15 @@ body{
 
 body{
     overflow:visible;
+}
+
+
+thead th {
+  position: sticky; 
+  top: 0;
+  z-index: 10; 
+  background-color: var(--primary-color);
+  color: white;
+  height: 50px; 
+  padding: 10px; 
 }

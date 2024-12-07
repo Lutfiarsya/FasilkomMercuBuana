@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "react-scripts": "^5.0.1",
     "swiper": "^11.1.15"
   }
 }
