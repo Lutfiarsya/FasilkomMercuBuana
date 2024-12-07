@@ -199,7 +199,7 @@ const handleProfile = () => {
                     })}
                 </tbody>
             </table>
-        </div>
+                </div>
                 </div>
             </div>
         </div>
