@@ -1,10 +1,9 @@
 import Navbar from "../Component/Navbar"
-import KP from '../Assets/Icons Services/task-management (1).png'
+import KP from '../Assets/Icons Services/KPIcon.png'
 import MBKM from '../Assets/Icons Services/project-management.png'
 import TA from '../Assets/Icons Services/start-up.png'
 import MPTI from '../Assets/Icons Services/file-managament.png'
 import { Link, useNavigate } from "react-router-dom"
-import Table from "../Component/TableMahasiswa/Table"
 import { useState } from "react"
 
 const MahasiswaPage = ({profile, home}) => {
