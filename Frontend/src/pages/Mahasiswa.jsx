@@ -5,6 +5,7 @@ import TA from '../Assets/Icons Services/start-up.png'
 import MPTI from '../Assets/Icons Services/file-managament.png'
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
+import Button from "../Component/Button"
 
 const MahasiswaPage = ({profile, home}) => {
 const navigate = useNavigate()
@@ -58,7 +59,7 @@ const data = {
             Status: 'Berhasil'
         }
     ],
-    'TA' : [
+    'Tugas Akhir' : [
         {
             keterangan : 'Pendataan Tugas Akhir',
             nama: "Luthfie Arsya",
@@ -72,7 +73,7 @@ const data = {
             Status: 'Berhasil'
         }
     ],
-    'KP' : [
+    'Kerja Praktik' : [
         {
             keterangan : 'Peminatan Kerja Praktik',
             nama: "Luthfie Arsya",
@@ -157,22 +158,22 @@ const handleProfile = () => {
                     })}
                 </div>
                 </div> 
-                <div>
                     <h1 className="ml-4 font-semibold text-3xl mt-10 text-[--primary-color]">Status Pengajuan</h1>
-                    <div className="w-[97%] m-auto border-b-2 border-gray-500 h-10">
-                    <div className="w-[40%] mt-6 h-10 flex justify-between  flex-row items-center text-gray-500 font-regular border-gray-500">
+                <div className="flex items-center justify-center flex-col">
+                    <div className="w-[97%] m-auto border-b-2 border-gray-500">
+                     <div className="w-[40%] mt-6 flex justify-between  flex-row items-center text-gray-500  font-regular border-gray-500">
                             {['MBKM', 'MPTI', 'Tugas Akhir', 'Kerja Praktik'].map((items) => {
                                 return(
                                     <div className="flex flex-row text-center">
                                         <button onClick={() => handleClick(items)} type="button"
-                                        className={`h-10 p-4 pb-1 relative  flex text-center items-center ${services === items ? `text-[--primary-color] border-b-2 border-[--primary-color]` : `border-gray-500`}`}    
+                                        className={` p-4 pb-1 relative  flex text-center items-center ${services === items ? `text-[--primary-color] border-b-2 border-[--primary-color]` : `border-gray-500`}`}    
                                         >{items}</button>
                                     </div>
                                 )
                             })}
                         </div>
                     </div>
-                    <div className="relative w-full max-h-[280px] overflow-y-auto border border-gray-300">
+                    <div className="relative w-[97%] items-center flex justify-center bg-green-400 max-h-[280px] mt-6 overflow-y-auto border border-gray-300">
                         <table className="w-full table-auto border-collapse  text-white text-center font-['Poppins'] shadow-[4px_4px_5px_-4px_black]">
                             <thead>
                                 <tr className="bg-[--primary-color] h-12 sticky top-0 z-10 text-white">
@@ -187,12 +188,11 @@ const handleProfile = () => {
                     {selectedData?.map((items, index) => {
                         return(
                         <tr key={index} className="bg-white text-black h-12 border-t">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{items.keterangan}</td>
+                            <td>{items.nama}</td>
+                            <td>{items.Dosen}</td>
+                            <td>{items.Status}</td>
+                            <td><Button/></td>
                         </tr>
                         )
                     })}
