@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom"
 
 const PageTugasAkhir = () => {
 const [open, setOpen] = useState(false)
+const [services, setServices] = useState('Klik Tugas Akhir')
 const navigate = useNavigate()
 const handleClick = () => {
     setOpen(true)
@@ -37,8 +38,19 @@ const handleDataDosen = () => {
                     <button className="hover:scale-110 hover:cursor-pointer transition-all transform w-60 h-12 px-4 rounded-md bg-[--primary-color]" onClick={handleDataDosen}>Data Dosen</button> 
                 </div>
             }
-            </div>    
-            <FormMahasiwa Judul={'TA'} Singkatan={'Tugas Akhir'} Program={'Tipe Proyek'} dosenPembimbing={'Dosen Pembimbing'} Periode={'Tahun Periode'}/>
+            </div>  
+            <div className="w-[80%] mt-10 flex justify-evenly border-b-2 border-gray-500 h-11 flex-row items-center text-gray-500  font-regular border-gray-500">
+                            {['Klik Tugas Akhir' , 'Pendaftaran Sidang Tugas Akhir'].map((items) => {
+                                return(
+                                    <div className="flex flex-row text-center">
+                                        <button onClick={() => setServices(items)} type="button"
+                                        className={` p-4 pb-1 relative  flex text-center items-center ${services === items ? `text-[--primary-color] border-b-2 border-[--primary-color]` : `border-gray-500`}`}    
+                                        >{items}</button>
+                                    </div>
+                                    
+                                )
+                            })}
+            </div>
             </div>
         </div>
     )

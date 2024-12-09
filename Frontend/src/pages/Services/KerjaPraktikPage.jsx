@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom"
 
 const PageKerjaPraktik = () => {
 const [open, setOpen] = useState(false)
+const [services, setServices] = useState('Peminatan Kerja Praktik')
 const navigate = useNavigate()
 const handleClick = () => {
     setOpen(true)
@@ -38,7 +39,18 @@ const handleDataDosen = () => {
                 </div>
             }
             </div>    
-            <FormMahasiwa Judul={'KP'} Singkatan={'Kerja Praktik'} Program={'Tipe Proyek'} dosenPembimbing={'Dosen Pembimbing'} Periode={'Tahun Periode'}/>
+            <div className="w-[80%] mt-10 flex justify-evenly border-b-2 border-gray-500 h-11 flex-row items-center text-gray-500  font-regular border-gray-500">
+                            {['Peminatan Kerja Praktik', 'Pendaftaran Sidang Kerja Praktik', 'Pengumpulan Laporan Akhir'].map((items) => {
+                                return(
+                                    <div className="flex flex-row text-center">
+                                        <button onClick={() => setServices(items)} type="button"
+                                        className={` p-4 pb-1 relative  flex text-center items-center ${services === items ? `text-[--primary-color] border-b-2 border-[--primary-color]` : `border-gray-500`}`}    
+                                        >{items}</button>
+                                    </div>
+                                    
+                                )
+                            })}
+            </div>
             </div>
         </div>
     )
