@@ -19,7 +19,10 @@ const DosenPage = () => {
                     <h3 className="text-md italic ml-4">Teknik Informatika</h3>
                     <button className="absolute right-4 bottom-2">Check Details</button>
                 </div>
-                <div className="relative w-[97%] mt-6 flex items-center justify-center m-auto max-h-[280px] overflow-y-auto border border-gray-300">
+                <div className="w-[97%] flex h-full  m-auto mt-6">
+                <h1 className="text-4xl font-semibold text-[--primary-color]">List Mahasiswa Bimbingan</h1>
+                </div>
+                <div className="relative w-[97%] mt-4 flex items-center justify-center m-auto max-h-[280px] overflow-y-auto border border-gray-300">
             <table className="w-full table-auto border-collapse  text-white text-center font-['Poppins'] shadow-[4px_4px_5px_-4px_black]">
                 <thead>
                     <tr className="bg-[--primary-color] h-12 sticky top-0 z-10 text-white">
