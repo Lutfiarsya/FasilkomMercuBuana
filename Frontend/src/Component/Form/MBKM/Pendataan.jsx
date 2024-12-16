@@ -1,13 +1,12 @@
-import { CaretDown, Upload } from "@phosphor-icons/react"
+import { CaretDown, FileText, Upload } from "@phosphor-icons/react"
 import { useState } from "react"
-import Panduan from "../../Panduan"
 import ExampleFile from "../../ExampleFile"
 
 const Pendataan = ({Judul, Singkatan, Program, dosenPembimbing, Periode}) => {
 const [inputNIM, setInputNIM] = useState('')
 const [number, setNumber] = useState('')
 const [exampleFile, setExampleFile] = useState(false)
-const [file, setFile] = useState(null)
+const [selectedFile, setSelectedFile] = useState({})
 
 
 const changeNIM = (e) => {
@@ -18,12 +17,22 @@ const changeNIM = (e) => {
   };
 
   const handleFile = (event) => {
-    const uploadFile = event.target.file[0]
-    if(uploadFile){
-        setFile(uploadFile)
-        console.log('File berhasil di upload', file)
+    // validasi target file yang ingin di upload
+    const {id, files: uploadedFiles } = event.target
+    console.log(uploadedFiles)
+    console.log(id)
+
+    // jika ada data dalam array
+    if(uploadedFiles.length > 0){
+        setSelectedFile((prev) => ({
+            ...prev,
+            [id]: uploadedFiles
+        }));
     }
+    console.log(selectedFile)
+    
   }
+
 
   const showExampleFile = () => {
     setExampleFile(true)
@@ -71,11 +80,14 @@ const changeNIM = (e) => {
                 <input type="text" id="Deskripsi Kegiatan" className="w-full h-10 my-6 shadow-[0px_0px_8px_-6px_black] rounded-sm  px-2" placeholder="Nama Pembimbing MBKM"/>
                 <input type="text" id="Deskripsi Kegiatan" className="w-full h-10 shadow-[0px_0px_8px_-6px_black] rounded-sm  px-2" placeholder="Nama Pembimbing Industri"/>
                 <form action="/upload" method="" enctype="multipart/form-data" className="w-full my-6 flex flex-col h-[200px] justify-between">
+
+
+                        {/* Upload Surat izin diterima di MBKM */}
                     <div className="w-full  flex flex-row">
-                        <label className="w-[45%] h-10 realtive text-gray-400 italic shadow-[0px_0px_8px_-6px_black] rounded-sm flex hover:cursor-pointer items-center justify-center bg-white px-2">
-                            <Upload size={25} className="absolute left-[210px]"/>
-                                 Upload Surat Diterima
-                        <input type="file" id="Deskripsi Kegiatan" accept="image/*" className="w-[45%] hidden h-10 shadow-[0px_0px_8px_-6px_black] rounded-sm text-center bg-white px-2" placeholder="Upload Surat Izin / Laporan Awal"/>
+                        <label className="w-[45%] h-10  relative text-gray-400 italic shadow-[0px_0px_8px_-6px_black] rounded-sm flex hover:cursor-pointer items-center justify-start bg-white  px-2">
+                           {selectedFile['SuratIzin'] ? <FileText size={25} color="#00376d" weight="fill"  className="mx-6"/> : <Upload size={25} className="mx-6" color="#00376d"/> }
+                            {selectedFile['SuratIzin']  ? selectedFile['SuratIzin'][0]?.name : `Upload Surat Izin / Laporan Awal`}
+                        <input type="file" onChange={handleFile} id="SuratIzin" accept="application/pdf,application/msword, application/docx" className="w-[45%] hidden h-10 shadow-[0px_0px_8px_-6px_black] rounded-sm text-center bg-white px-2" />
                         </label>
                         {exampleFile ? 
                             <div><ExampleFile setClose={setExampleFile}/></div>
@@ -83,11 +95,14 @@ const changeNIM = (e) => {
                             <button onClick={showExampleFile} className="hover:scale-105 transform transition-all w-36 ml-6 rounded-md h-10 bg-[--primary-color] text-white">Contoh file</button>
                         }
                     </div>
+                    
+
+                        {/* Upload transkrip Nilai */}
                     <div className="w-full  flex flex-row">
-                        <label className="w-[45%] h-10 realtive text-gray-400 italic shadow-[0px_0px_8px_-6px_black] rounded-sm flex hover:cursor-pointer items-center justify-center bg-white px-2">
-                             <Upload size={25} className="absolute left-[210px]"/>
-                                Upload Transkrip Nilai UMB
-                        <input type="file" id="Deskripsi Kegiatan" className="w-[45%] hidden h-10 shadow-[0px_0px_8px_-6px_black] rounded-sm text-center bg-white px-2" placeholder="Upload Surat Izin / Laporan Awal"/>
+                        <label className="w-[45%] h-10 relative text-gray-400 italic shadow-[0px_0px_8px_-6px_black] rounded-sm flex hover:cursor-pointer items-center justify-start bg-white px-2">
+                        {selectedFile['Transkrip'] ? <FileText size={25} color="#00376d" weight="fill"  className="mx-6"/> : <Upload size={25} className="mx-6" color="#00376d"/> }
+                        {selectedFile['Transkrip'] ? selectedFile['Transkrip'][0]?.name : `Upload Transkrip Nilai UMB`}
+                        <input onChange={handleFile} type="file" id="Transkrip" className="w-[45%] hidden h-10 shadow-[0px_0px_8px_-6px_black] rounded-sm text-center bg-white px-2" placeholder="Upload Transkrip Nilai UMB"/>
                         </label>
                         {exampleFile ? 
                             <div><ExampleFile setClose={setExampleFile}/></div>
@@ -95,28 +110,32 @@ const changeNIM = (e) => {
                             <button onClick={showExampleFile} className="hover:scale-105 transform transition-all w-36 ml-6 rounded-md h-10 bg-[--primary-color] text-white">Contoh file</button>
                         }
                     </div>
-                    <div className="w-full flex flex-row">
-                        <label className="w-[45%] h-10 realtive text-gray-400 italic shadow-[0px_0px_8px_-6px_black] rounded-sm flex hover:cursor-pointer items-center justify-center bg-white px-2">
-                            <Upload size={25} className="absolute left-[210px]"/>
-                                Upload KRS Semester Berjalan
-                        <input type="file" id="Deskripsi Kegiatan" className="w-[45%] hidden h-10 shadow-[0px_0px_8px_-6px_black] rounded-sm text-center bg-white px-2" placeholder="Upload Surat Izin / Laporan Awal"/>
+
+
+                    <div className="w-full  flex flex-row">
+                        <label className="w-[45%] h-10 relative text-gray-400 italic shadow-[0px_0px_8px_-6px_black] rounded-sm flex hover:cursor-pointer items-center justify-start bg-white px-2">
+                        {selectedFile['Silabus'] ? <FileText size={25} color="#00376d" weight="fill"  className="mx-6"/> : <Upload size={25} className="mx-6" color="#00376d"/> }
+                        {selectedFile['Silabus'] ? selectedFile['Silabus'][0]?.name : `Upload Silabus MBKM`}
+                        <input onChange={handleFile} type="file" id="Silabus" className="w-[45%] hidden h-10 shadow-[0px_0px_8px_-6px_black] rounded-sm text-center bg-white px-2" placeholder="Upload Silabus MBKM"/>
                         </label>
                         {exampleFile ? 
                             <div><ExampleFile setClose={setExampleFile}/></div>
                                     :
-                        <button onClick={showExampleFile} className="hover:scale-105 transform transition-all w-36 ml-6 rounded-md h-10 bg-[--primary-color] text-white">Contoh file</button>
+                            <button onClick={showExampleFile} className="hover:scale-105 transform transition-all w-36 ml-6 rounded-md h-10 bg-[--primary-color] text-white">Contoh file</button>
                         }
                     </div>
-                    <div className="w-full flex flex-row">
-                        <label className="w-[45%] h-10 realtive text-gray-400 italic shadow-[0px_0px_8px_-6px_black] rounded-sm flex hover:cursor-pointer items-center justify-center bg-white px-2">
-                            <Upload size={25} className="absolute left-[210px]"/>
-                                Upload Silabus MBKM
-                        <input type="file" id="Deskripsi Kegiatan" className="w-[45%] hidden h-10 shadow-[0px_0px_8px_-6px_black] rounded-sm text-center bg-white px-2" placeholder="Upload Surat Izin / Laporan Awal"/>
+
+
+                    <div className="w-full  flex flex-row">
+                        <label className="w-[45%] h-10 relative text-gray-400 italic shadow-[0px_0px_8px_-6px_black] rounded-sm flex hover:cursor-pointer items-center justify-start bg-white px-2">
+                        {selectedFile['KRS'] ? <FileText size={25} color="#00376d" weight="fill"  className="mx-6"/> : <Upload size={25} className="mx-6" color="#00376d"/> }
+                        {selectedFile['KRS'] ? selectedFile['KRS'][0]?.name : `Upload KRS Berjalan`}
+                        <input onChange={handleFile} type="file" id="KRS" className="w-[45%] hidden h-10 shadow-[0px_0px_8px_-6px_black] rounded-sm text-center bg-white px-2" placeholder="Upload KRS Berjalan"/>
                         </label>
                         {exampleFile ? 
                             <div><ExampleFile setClose={setExampleFile}/></div>
                                     :
-                        <button onClick={showExampleFile} className="hover:scale-105 transform transition-all w-36 ml-6 rounded-md h-10 bg-[--primary-color] text-white">Contoh file</button>
+                            <button onClick={showExampleFile} className="hover:scale-105 transform transition-all w-36 ml-6 rounded-md h-10 bg-[--primary-color] text-white">Contoh file</button>
                         }
                     </div>
                 </form>
