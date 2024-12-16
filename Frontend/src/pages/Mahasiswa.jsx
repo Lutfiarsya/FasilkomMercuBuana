@@ -50,13 +50,15 @@ const data = {
             keterangan : 'Pendataan MBKM',
             nama: "Luthfie Arsya",
             Dosen: 'Dr Akmalll sanjaya Tr',
-            Status: 'Berhasil'
+            Status: 'Berhasil',
+            bimbingan : false
         },
         {
             keterangan : 'Laporan Akhir MBKM',
             nama: "Luthfie Arsya",
             Dosen: 'Dr Akmalll sanjaya Tr',
-            Status: 'Berhasil'
+            Status: 'Berhasil',
+            bimbingan: true
         }
     ],
     'Tugas Akhir' : [
@@ -64,13 +66,15 @@ const data = {
             keterangan : 'Pendataan Tugas Akhir',
             nama: "Luthfie Arsya",
             Dosen: 'Dr Akmalll sanjaya Tr',
-            Status: 'Berhasil'
+            Status: 'Berhasil',
+            bimbingan : true
         },
         {
             keterangan : 'Pendaftaran Sidang Akhir',
             nama: "Luthfie Arsya",
             Dosen: 'Dr Akmalll sanjaya Tr',
-            Status: 'Berhasil'
+            Status: 'Berhasil',
+            bimbingan: false
         }
     ],
     'Kerja Praktik' : [
@@ -78,18 +82,21 @@ const data = {
             keterangan : 'Peminatan Kerja Praktik',
             nama: "Luthfie Arsya",
             Dosen: 'Dr Akmalll sanjaya Tr',
-            Status: 'Berhasil'
+            Status: 'Berhasil',
+            bimbingan : true
         },
         {
             keterangan : 'Pendaftaran Sidang Akhir',
             nama: "Luthfie Arsya",
             Dosen: 'Dr Akmalll sanjaya Tr',
-            Status: 'Berhasil'
+            Status: 'Berhasil',
+            bimbingan : true
         },        {
             keterangan : 'Pengumpulan Laporan Akhir',
             nama: "Luthfie Arsya",
             Dosen: 'Dr Akmalll sanjaya Tr',
-            Status: 'Berhasil'
+            Status: 'Berhasil',
+            bimbingan : false
         }
     ],
     'MPTI' : [
@@ -192,7 +199,7 @@ const handleProfile = () => {
                             <td>{items.nama}</td>
                             <td>{items.Dosen}</td>
                             <td>{items.Status}</td>
-                            <td><Button/></td>
+                            <td><Button require={items.bimbingan}/></td>
                         </tr>
                         )
                     })}
