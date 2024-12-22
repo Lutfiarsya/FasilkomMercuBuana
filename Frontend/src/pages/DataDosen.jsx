@@ -1,6 +1,5 @@
 import { House, MagnifyingGlass } from "@phosphor-icons/react";
 import Navbar from "../Component/Navbar";
-import Table from "../Component/TableMahasiswa/Table";
 import InputSearch from "../Utilities/inputSearch";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -14,19 +13,19 @@ const DataDosen = () => {
     navigate(-1)
   }
     const data =  [
-          { 'NID': '14145141', 'Nama': 'Nama 1', 'Departemen': 'Teknik Informatika', 'Keahlian': 'CyberSecurity' },
-          { 'NID': '14145142', 'Nama': 'Nama 2', 'Departemen': 'Teknik Informatika', 'Keahlian': 'CyberSecurity' },
-          { 'NID': '14145145', 'Nama': 'Nama 3', 'Departemen': 'Teknik Informatika', 'Keahlian': 'CyberSecurity' },
-          { 'NID': '14145159', 'Nama': 'Nama 4', 'Departemen': 'Sistem Informasi',   'Keahlian': 'Web Developer' },
-          { 'NID': '14145155', 'Nama': 'Nama 5', 'Departemen': 'Sistem Informasi',   'Keahlian': 'Web Developer' },
-          { 'NID': '14145156', 'Nama': 'Nama 6', 'Departemen': 'Teknik Informatika', 'Keahlian': 'Data Science' },
-          { 'NID': '14145157', 'Nama': 'Nama 7', 'Departemen': 'Teknik Informatika', 'Keahlian': 'Artificial Intellagence' },
-          { 'NID': '14145157', 'Nama': 'Nama 7', 'Departemen': 'Teknik Informatika', 'Keahlian': 'Artificial Intellagence' },
-          { 'NID': '14145157', 'Nama': 'Nama 7', 'Departemen': 'Sistem Informasi',   'Keahlian': 'Data Science' },
-          { 'NID': '14145157', 'Nama': 'Nama 7', 'Departemen': 'Sistem Informasi',   'Keahlian': 'Data Science' },
-          { 'NID': '14145157', 'Nama': 'Nama 7', 'Departemen': 'Sistem Informasi',   'Keahlian': 'Data Science' },
-          { 'NID': '14145157', 'Nama': 'Nama 7', 'Departemen': 'Sistem Informasi',   'Keahlian': 'Data Science' },
-          { 'NID': '14145157', 'Nama': 'Nama 7', 'Departemen': 'Sistem Informasi',   'Keahlian': 'Data Science' },
+          { 'NID': '14145141', 'Nama': 'Dr. Adrian Wicaksono, M.T.', 'Departemen': 'Teknik Informatika', 'Keahlian': 'CyberSecurity', 'lahir' : 'Surabaya, 12 April 1980', 'NoHp' : '+62 812 3456 7890', pendidikan : [{'S1' : 'Teknik Informatika, ITS', 'S2' : 'Teknik Elektro, ITB' , 'S3' : 'Teknologi Informasi, Universitas Tokyo'}]  },
+          { 'NID': '14145142', 'Nama': 'Prof. Farah Nabila, S.Kom., Ph.D.', 'Departemen': 'Teknik Informatika', 'Keahlian': 'CyberSecurity' , 'lahir' : 'Jakarta, 8 Juni 1985', 'NoHp' : '+62 813 4567 8912' , pendidikan : [{'S1' : 'Sistem Informasi, UI', 'S2' : 'Data Science, Monash University', 'S3' : 'Artificial Intelligence, MIT'}]},
+          { 'NID': '14145145', 'Nama': 'Ir. Bagas Saputra, M.Sc.', 'Departemen': 'Teknik Informatika', 'Keahlian': 'CyberSecurity' },
+          { 'NID': '14145159', 'Nama': 'Dr. Indah Maharani, S.T., M.Kom.', 'Departemen': 'Sistem Informasi',   'Keahlian': 'Web Developer' },
+          { 'NID': '14145155', 'Nama': 'Rahmat Firdaus, S.Kom., M.T.I.', 'Departemen': 'Sistem Informasi',   'Keahlian': 'Web Developer' },
+          { 'NID': '14145156', 'Nama': 'Prof. Hendra Pratama, S.T., Ph.D.', 'Departemen': 'Teknik Informatika', 'Keahlian': 'Data Science' },
+          { 'NID': '14145157', 'Nama': 'Dian Kusuma, S.Si., M.T.I.', 'Departemen': 'Teknik Informatika', 'Keahlian': 'Artificial Intellagence' },
+          { 'NID': '14145157', 'Nama': 'Dr. Lestari Wahyuni, M.Kom.', 'Departemen': 'Teknik Informatika', 'Keahlian': 'Artificial Intellagence' },
+          { 'NID': '14145157', 'Nama': 'Ahmad Fauzi, S.T., M.Comp.Sc.', 'Departemen': 'Sistem Informasi',   'Keahlian': 'Data Science' },
+          { 'NID': '14145157', 'Nama': 'Prof. Siti Nurhaliza, S.Kom., Ph.D.', 'Departemen': 'Sistem Informasi',   'Keahlian': 'Data Science' },
+          { 'NID': '14145157', 'Nama': 'Dr. Zainuddin Ismail, M.T.', 'Departemen': 'Sistem Informasi',   'Keahlian': 'Data Science' },
+          { 'NID': '14145157', 'Nama': 'Fadilah Ramadhani, S.Kom., M.Sc.', 'Departemen': 'Sistem Informasi',   'Keahlian': 'Data Science' },
+          { 'NID': '14145157', 'Nama': 'Prof. Andi Setiawan, S.T., Ph.D.', 'Departemen': 'Sistem Informasi',   'Keahlian': 'Data Science' },
         ];
 
         const filteredData = data?.filter((items) =>
@@ -42,10 +41,10 @@ const DataDosen = () => {
             <div className="w-[95%] h-12 border-b-2 border-gray-400 flex items-center justify-center pb-4 mt-12">
             <h1 className="text-5xl font-semibold text-[--primary-color]">Dosen Fakultas Ilmu Komputer</h1>
             </div>
-            <div className="w-[95%] mt-6 mb-2 bg-green-400 flex flex-row items-center justify-between">
+            <div className="w-[95%] mt-6 mb-2 flex flex-row items-center justify-between">
                 <House size={42} weight="fill" color='var(--primary-color)' className="hover:cursor-pointer" onClick={handleNavigate} />
                 <InputSearch setFilter={setFilter} filter={filter}/>
-                <MagnifyingGlass size={20} className="absolute right-4"/>
+                <MagnifyingGlass size={20} className="absolute right-10"/>
             </div>
             <div className="relative w-[97%] max-h-[280px] overflow-y-auto border border-gray-300">
             <table className="w-full table-auto border-collapse  text-white text-center font-['Poppins'] shadow-[4px_4px_5px_-4px_black]">
@@ -66,7 +65,7 @@ const DataDosen = () => {
                             <td>{items.Nama}</td>
                             <td>{items.Departemen}</td>
                             <td>{items.Keahlian}</td>
-                            <td><DetailsDosen/></td>
+                            <td><DetailsDosen data={items}/></td>
                         </tr>
                         )
                     })}
