@@ -2,7 +2,7 @@ import Navbar from "../Component/Navbar"
 import KP from '../Assets/Icons Services/KPIcon.png'
 import MBKM from '../Assets/Icons Services/project-management.png'
 import TA from '../Assets/Icons Services/start-up.png'
-import MPTI from '../Assets/Icons Services/file-managament.png'
+import CP from '../Assets/Icons Services/file-managament.png'
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import Button from "../Component/Button"
@@ -37,92 +37,45 @@ const form = [
     },
     {
         id: 4,
-        image: MPTI,
-        title: "Manajemen Project Teknologi Informasi - MPTI",
-        path : '/mahasiswa/form-mpti'
+        image: CP,
+        title: "Caption Project",
+        path : '/mahasiswa/form-caption-project'
     },
 ]
 
 
-const data = {
-    'MBKM' : [
-        {
-            keterangan : 'Pendataan MBKM',
-            nama: "Luthfie Arsya",
-            Dosen: 'Dr Akmalll sanjaya Tr',
-            Status: 'Berhasil',
-            bimbingan : false
-        },
-        {
-            keterangan : 'Laporan Akhir MBKM',
-            nama: "Luthfie Arsya",
-            Dosen: 'Dr Akmalll sanjaya Tr',
-            Status: 'Berhasil',
-            bimbingan: true
-        }
-    ],
-    'Tugas Akhir' : [
-        {
-            keterangan : 'Pendataan Tugas Akhir',
-            nama: "Luthfie Arsya",
-            Dosen: 'Dr Akmalll sanjaya Tr',
-            Status: 'Berhasil',
-            bimbingan : true
-        },
-        {
-            keterangan : 'Pendaftaran Sidang Akhir',
-            nama: "Luthfie Arsya",
-            Dosen: 'Dr Akmalll sanjaya Tr',
-            Status: 'Berhasil',
-            bimbingan: false
-        }
-    ],
-    'Kerja Praktik' : [
-        {
-            keterangan : 'Peminatan Kerja Praktik',
-            nama: "Luthfie Arsya",
-            Dosen: 'Dr Akmalll sanjaya Tr',
-            Status: 'Berhasil',
-            bimbingan : true
-        },
-        {
-            keterangan : 'Pendaftaran Sidang Akhir',
-            nama: "Luthfie Arsya",
-            Dosen: 'Dr Akmalll sanjaya Tr',
-            Status: 'Berhasil',
-            bimbingan : true
-        },        {
-            keterangan : 'Pengumpulan Laporan Akhir',
-            nama: "Luthfie Arsya",
-            Dosen: 'Dr Akmalll sanjaya Tr',
-            Status: 'Berhasil',
-            bimbingan : false
-        }
-    ],
-    'MPTI' : [
-        {
-            keterangan : 'Pendaftaran MPTI',
-            nama: "Luthfie Arsya",
-            Dosen: 'Dr Akmalll sanjaya Tr',
-            Status: 'Berhasil'
-        },
-        {
-            keterangan : 'Peminatan MPTI',
-            nama: "Luthfie Arsya",
-            Dosen: 'Dr Akmalll sanjaya Tr',
-            Status: 'Berhasil'
-        },
-        {
-            keterangan : 'Pendaftaran Sempro',
-            nama: "Luthfie Arsya",
-            Dosen: 'Dr Akmalll sanjaya Tr',
-            Status: 'Berhasil'
-        }
-    ],
-}
+const data = [
+{
+    id: 1,
+    program: 'Merdeka Belajar kampus Merdeka',
+    Dosen: "Dr.Atma Kusuma M.KOM",
+    status: "Berhasil",
+    bimbingan: true
+},
+{
+    id: 2,
+    program: 'Caption Project',
+    Dosen: "Dr.Atma Kusuma M.KOM",
+    status: "Berhasil",
+    bimbingan: true
+},
+{
+    id: 3,
+    program: 'Tugas Akhir',
+    Dosen: "Dr.Atma Kusuma M.KOM",
+    status: "Berhasil",
+    bimbingan: true
+},
+{
+    id: 4,
+    program: 'Kerja Praktik',
+    Dosen: "Dr.Atma Kusuma M.KOM",
+    status: "Berhasil",
+    bimbingan: true
+},
 
+]
 
-const selectedData = data[services]
 
 
 
@@ -167,38 +120,23 @@ const handleProfile = () => {
                 </div> 
                     <h1 className="ml-4 font-semibold text-3xl mt-10 text-[--primary-color]">Status Pengajuan</h1>
                 <div className="flex items-center justify-center flex-col">
-                    <div className="w-[97%] m-auto border-b-2 border-gray-500">
-                     <div className="w-[40%] mt-6 flex justify-between  flex-row items-center text-gray-500  font-regular border-gray-500">
-                            {['MBKM', 'MPTI', 'Tugas Akhir', 'Kerja Praktik'].map((items) => {
-                                return(
-                                    <div className="flex flex-row text-center">
-                                        <button onClick={() => handleClick(items)} type="button"
-                                        className={` p-4 pb-1 relative  flex text-center items-center ${services === items ? `text-[--primary-color] border-b-2 border-[--primary-color]` : `border-gray-500`}`}    
-                                        >{items}</button>
-                                    </div>
-                                )
-                            })}
-                        </div>
-                    </div>
                     <div className="relative w-[97%] items-center flex justify-center bg-green-400 max-h-[280px] mt-6 overflow-y-auto border border-gray-300">
                         <table className="w-full table-auto border-collapse  text-white text-center font-['Poppins'] shadow-[4px_4px_5px_-4px_black]">
                             <thead>
                                 <tr className="bg-[--primary-color] h-12 sticky top-0 z-10 text-white">
-                                    <th className="border-x-1 border-white">Keterangan Program</th>
-                                    <th>Nama</th>
+                                    <th className="border-x-1 border-white">Jenis Program</th>
                                     <th>Dosen Pembimbing</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                     </thead>
                     <tbody className="text-center">
-                    {selectedData?.map((items, index) => {
+                    {data?.map((items) => {
                         return(
-                        <tr key={index} className="bg-white text-black h-12 border-t">
-                            <td>{items.keterangan}</td>
-                            <td>{items.nama}</td>
+                        <tr key={items.id} className="bg-white text-black h-12 border-t">
+                            <td>{items.program}</td>
                             <td>{items.Dosen}</td>
-                            <td>{items.Status}</td>
+                            <td>{items.status}</td>
                             <td><Button require={items.bimbingan}/></td>
                         </tr>
                         )
