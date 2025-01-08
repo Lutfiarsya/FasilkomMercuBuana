@@ -72,7 +72,7 @@ const handleClick = (event) => {
               </div>
               <div className="w-[70%] h-72 flex flex-col items-center justify-evenly">
               <button onClick={handleClick}  className="bg-[--secondary-color] w-[400px] text-2xl h-16  rounded-md text-white font-semibold font-['Poppins'] shadow-[4px_4px_8px_-4px_black]">Login</button>
-              <button onClick={(e) => navigate('/register')}  className="bg-white w-[400px] text-2xl h-16  rounded-md text-[--secondary-color] font-semibold font-['Poppins'] shadow-[2px_2px_8px_-4px_black]">Register</button>
+              <button onClick={() => navigate('/register')}  className="bg-white w-[400px] text-2xl h-16  rounded-md text-[--secondary-color] font-semibold font-['Poppins'] shadow-[2px_2px_8px_-4px_black]">Register</button>
               </div>
 
             </div>
