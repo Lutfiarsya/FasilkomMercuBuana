@@ -64,8 +64,6 @@ const changeNIM = (e) => {
             <p className="text-md italic">{Singkatan}</p>
             </div>
             <div className="flex flex-col justify-around  items-start w-[90%]">
-                <input type="text" id="NIM" maxLength={11} onChange={changeNIM} value={inputNIM} className="w-full h-10 my-6 shadow-[0px_0px_8px_-6px_black] rounded-sm  px-2" placeholder="NIM"/>
-                <input type="text" id="Nama Lengkap" className="w-full h-10 shadow-[0px_0px_8px_-6px_black] rounded-sm  px-2" placeholder="Nama Lengkap"/>
                 <div className="w-full relative">
                     <CaretDown size={20} className="absolute right-4 top-[35px]"/>
                     <select className="w-full h-10 shadow-[0px_0px_8px_-6px_black] my-6 rounded-sm px-2">

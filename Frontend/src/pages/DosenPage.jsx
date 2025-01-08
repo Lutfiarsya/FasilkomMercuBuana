@@ -1,5 +1,4 @@
 import Navbar from "../Component/Navbar";
-import Table from "../Component/TableMahasiswa/Table";
 
 const DosenPage = () => {
     const data = [

@@ -5,10 +5,10 @@ import MPTI from '../Assets/presentation.png'
 import TA from '../Assets/student.png'
 import TP from '../Assets/learning.png'
 import { useState } from "react"
-import Table from "../Component/TableMahasiswa/Table"
 import { House, MagnifyingGlass } from "@phosphor-icons/react"
 import { useNavigate } from "react-router-dom"
 import InputSearch from "../Utilities/inputSearch"
+import ActionButton from "../Component/ActionButton"
 
 
 const form = [
@@ -40,7 +40,7 @@ const form = [
 ]
 
 
-const data = {
+const data = [{
     "MBKM": [
       { 'NIM': '14145141', 'Nama': 'Nama 1', 'Angkatan': '2021', 'DosenPembimbing': 'Dosen 1', 'TanggalUpload': '2023-01-01' },
       { 'NIM': '14145142', 'Nama': 'Nama 2', 'Angkatan': '2020', 'DosenPembimbing': 'Dosen 2', 'TanggalUpload': '2023-01-02' },
@@ -61,7 +61,7 @@ const data = {
     'Kerja Praktik': [
       { "NIM": '14145192', "Nama": 'Nama 5', "Angkatan": '2023', "DosenPembimbing": 'Dosen 5', "TanggalUpload": '2023-01-05' },
     ],
-  };
+  }];
 
 
 const DetailsPage = () => {
@@ -80,8 +80,13 @@ const ClickNavigate = () => {
     navigate('/admin')
 }
 
-
-
+const filteredData = data.filter((items) =>
+    filter ? 
+      Object.values(items).some((val) =>
+        String(val).toLowerCase().includes(filter?.toLowerCase())
+      ) : true
+    );
+    const selectedData = filteredData[0][services]
     return(
         <div className="font-['Poppins']">
             <Navbar/>
@@ -132,8 +137,35 @@ const ClickNavigate = () => {
                             />
                         </div>
                     </div>
-                    <div className="w-[97%] m-auto items-center font-regular flex justify-center mt-6">
-                        <Table category={services} filter={filter} data={data} Judul1={"NIM"} Judul2={"Nama"} Judul3={"Angkatan"} Judul4={'Dosen Pembimbing'} Judul5={'Tanggal Upload'} Judul6={'Action'}/>
+
+
+                    <div className="relative w-[97%] items-center flex justify-center bg-green-400 max-h-[280px] mt-6 overflow-y-auto border border-gray-300">
+                                    <table className="w-full table-auto border-collapse  text-white text-center font-['Poppins'] shadow-[4px_4px_5px_-4px_black]">
+                <thead>
+                    <tr className="bg-[--primary-color] h-12 sticky top-0 z-10 text-white">
+                        <th className="border-x-1 border-white">NIM</th>
+                        <th>Nama</th>
+                        <th>Angkatan</th>
+                        <th>Dosen Pembimbing</th>
+                        <th>Tanggal Upload</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody className="text-center">
+                    {selectedData?.map((items, index) => {
+                        return(
+                        <tr key={index} className="bg-white text-black h-12 border-t">
+                            <td>{items.NIM}</td>
+                            <td>{items.Nama}</td>
+                            <td>{items.Angkatan}</td>
+                            <td>{items.DosenPembimbing}</td>
+                            <td>{items.TanggalUpload}</td>
+                            <td><ActionButton/></td>
+                        </tr>
+                        )
+                    })}
+                </tbody>
+            </table>
                     </div>
                 </div>
             </div>

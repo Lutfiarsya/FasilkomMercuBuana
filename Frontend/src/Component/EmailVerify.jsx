@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
+
 import logo from '../Assets/MercuIcons.png'
 import CountDown from '../Utilities/CountDown'
 const EmailVerify = ({valueGmail}) => {
-const [codeverify, setCodeVerify] = useState([])
+
 
 
 
