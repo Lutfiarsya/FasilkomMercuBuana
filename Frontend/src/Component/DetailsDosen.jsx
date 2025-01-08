@@ -1,5 +1,4 @@
 import { useState } from "react";
-import PictureDosen from '../Assets/PP Dosen.jpg'
 
 
 
@@ -15,7 +14,6 @@ const [details, setDetails] = useState(false)
                     <div className="w-full flex flex-row h-44 items-center text-start px-4">
                         <div>
                             <img 
-                            src={PictureDosen}
                             width={170}
                             height={170}
                             className="rounded-full"
