@@ -11,10 +11,11 @@ import PageMBKM from './pages/Services/MbkmPage';
 import DataDosen from './pages/DataDosen';
 import NotFound from './pages/NotFound';
 import Profile from './pages/Profile';
-import PageMPTI from './pages/Services/MPTIPage';
 import DosenPage from './pages/DosenPage';
 import PageTugasAkhir from './pages/Services/TugasAkhirPage';
 import PageKerjaPraktik from './pages/Services/KerjaPraktikPage';
+import Register from './pages/RegisterPage';
+import CaptionProjectPage from './pages/Services/CPPage';
 
 function App() {
 const[IsLogin, setIsLogin] = useState(null)
@@ -28,6 +29,7 @@ const dosen = userAccess.dosen
       <Router>
         <Routes>
           <Route path='/'  element={<LoginPage setIsLogin={setIsLogin} dosenUser={dosen} mahasiswaUser={mahasiswa} adminUser={admin} />}/>
+          <Route path='/register' element={<Register/>}/>
           <Route path='/admin' element={
             <Protected IsLogin={IsLogin}>
               <AdminPage />
@@ -49,9 +51,9 @@ const dosen = userAccess.dosen
               <PageMBKM />
             </Protected>
             }/>
-            <Route path='/mahasiswa/form-MPTI' element={
+            <Route path='/mahasiswa/form-caption-project' element={
             <Protected IsLogin={IsLogin}>
-              <PageMPTI />
+              <CaptionProjectPage/>
             </Protected>
             }/>
             <Route path='/mahasiswa/form-tugas-akhir' element={
