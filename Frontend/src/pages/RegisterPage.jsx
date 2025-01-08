@@ -18,10 +18,17 @@ const handleVerify = () => {
     }
 }
 
-const slideVariants = {
+
+const slideVariantsEnter = {
     hidden: { x: "100%", opacity: 0 },
     visible: { x: 0, opacity: 1 },
     exit: { x: "-100%", opacity: 0 },
+}
+
+const slideVariantsExit = {
+    hidden: { x: "-100%", opacity: 0 },
+    visible: { x: 0, opacity: 1 },
+    exit: { x: "100%", opacity: 0 },
 }
 
 
@@ -30,8 +37,16 @@ const slideVariants = {
         <div className="w-full h-[630px] flex justify-center items-center  bg-black bg-opacity-25 z-20 font-['Poppins'] ">
             <div className={`shadow-xl w-[500px] text-center rounded-md ${codeVerify ? "h-64" : "h-96"}  flex flex-col text-[--primary-color] items-center transform  relative bg-white`}>
                 {codeVerify ? 
-                <div>
-                    <h1 className="text-5xl mt-4 font-semibold">Register</h1>
+                <motion.div className="overflow-hidden w-full h-full items-center flex flex-col">
+                    <motion.div
+                    className="relative"
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    variants={slideVariantsExit}
+                    transition={{ duration: 0.5 }}
+                    >
+                        <h1 className="text-5xl mt-4 font-semibold">Register</h1>
                     <p className="text-sm mt-2 italic">Pendaftaran Khusus mahasiswa dan dosen mercu buana</p>
                     <div className="relative flex flex-col w-full h-full items-center justify-center">
                         <input
@@ -44,16 +59,17 @@ const slideVariants = {
                         onClick={handleVerify}
                         >Verify Gmail</button>
                         </div>
-                        </div>
+                        </motion.div>    
+                    </motion.div> 
                         :
-                        <div className="relative flex flex-col w-full h-full overflow-hidden relative">
+                        <div className="relative flex flex-col w-full h-full overflow-hidden">
                         <motion.div 
                         initial="hidden"
                         animate="visible"
                         exit="exit"
-                        variants={slideVariants}
+                        variants={slideVariantsEnter}
                         transition={{ duration: 0.5 }}>
-                            <EmailVerify valueGmail={gmailVerify}/>
+                            <EmailVerify valueGmail={gmailVerify} setVerifyGmail={setCodeVerify}/>
                         </motion.div>
                         </div>
                     }
