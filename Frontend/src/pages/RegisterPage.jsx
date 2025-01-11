@@ -1,21 +1,29 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import EmailVerify from "../Component/EmailVerify"
+import RegistMahasiswa from "../Component/RegistMahasiswa"
+import logoMercu from '../Assets/MercuIcons.png'
+import ProgressTracking from "../Utilities/ProgressTracking"
+import RegistDosen from "../Component/RegistDosen"
 
 const Register = () =>{
 const [gmailVerify, setGmailVerify] = useState('')
-const [codeVerify, setCodeVerify] = useState(true)
+const [codeVerify, setCodeVerify] = useState('verify')
+const [validateCode, setValidateCode] = useState([])
+const [fillSuccess, setFillSuccess] = useState(false)
+const emailMahasiswa = 'student.mercubuana.ac.id';
+const emailDosen = 'mercubuana.ac.id';
 
 const handleVerify = () => {
-    const emailMahasiswa = /^[^\s@]+@student.mercubuana.ac.id/;
-    const emailDosen = /^[^\s@]+@mercubuana.ac.id/;
-    if (emailMahasiswa.test(gmailVerify) || emailDosen.test(gmailVerify)) {
+    const pattern = new RegExp(`^[A-Za-z0-9\s@]+@${emailDosen}|[A-Za-z0-9\s@]+@${emailMahasiswa}`)
+    if (pattern.test(gmailVerify)) {
       alert("email valid");
-      setCodeVerify(false)
+      setCodeVerify('codeVerify')
     } else {
       alert('tidak valid');
       setGmailVerify('')
     }
+    console.log(gmailVerify)
 }
 
 
@@ -34,9 +42,9 @@ const slideVariantsExit = {
 
 
     return(
-        <div className="w-full h-[630px] flex justify-center items-center  bg-black bg-opacity-25 z-20 font-['Poppins'] ">
-            <div className={`shadow-xl w-[500px] text-center rounded-md ${codeVerify ? "h-64" : "h-96"}  flex flex-col text-[--primary-color] items-center transform  relative bg-white`}>
-                {codeVerify ? 
+        <div className="w-full h-[630px] flex justify-center items-center  bg-black bg-opacity-25 z-20 font-['Poppins'] relative">
+            <div className={`shadow-xl w-[500px] text-center rounded-md ${codeVerify == 'verify' ? "h-64" : codeVerify == 'codeVerify' ? 'h-96' :  "h-[600px] w-[600px]"}  flex flex-col text-[--primary-color] items-center transform  relative bg-white`}>
+                {codeVerify == 'verify' ? 
                 <motion.div className="overflow-hidden w-full h-full items-center flex flex-col">
                     <motion.div
                     className="relative"
@@ -61,7 +69,7 @@ const slideVariantsExit = {
                         </div>
                         </motion.div>    
                     </motion.div> 
-                        :
+                       : codeVerify == 'codeVerify' ?
                         <div className="relative flex flex-col w-full h-full overflow-hidden">
                         <motion.div 
                         initial="hidden"
@@ -69,8 +77,30 @@ const slideVariantsExit = {
                         exit="exit"
                         variants={slideVariantsEnter}
                         transition={{ duration: 0.5 }}>
-                            <EmailVerify valueGmail={gmailVerify} setVerifyGmail={setCodeVerify}/>
+                            <EmailVerify valueGmail={gmailVerify} setVerifyGmail={setCodeVerify} code={validateCode} validateCode={setValidateCode}/>
                         </motion.div>
+                        </div>
+                        : 
+                        <div className="flex flex-col w-full justify-center items-center">
+                            <div className='m-2 mt-4 w-18 h-18 rounded-full bg-white border-gray-300  border-4 p-2'>
+                            <img
+                            src={logoMercu}
+                            width={50}
+                            height={50}
+                            />
+                            </div>
+                            <div className="flex flex-col w-full">
+                                <h1 className="text-3xl font-semibold">{gmailVerify.includes(emailMahasiswa) ? 'Registrasi Mahasiswa' : 'Registrasi Dosen'}</h1>
+                                <p className="italic text-sm">Silahkan isi data sesuai</p>
+                                <ProgressTracking fill={fillSuccess}/>
+                            </div>
+                            <div className="flex w-full items-center justify-center">
+                            {gmailVerify.includes(emailMahasiswa) ?  <RegistMahasiswa additional={fillSuccess}/> : <RegistDosen additional={fillSuccess} />} 
+                            </div>
+                            <div className="w-full flex flex-row mt-2 justify-end">
+                                <button className="w-36 h-10 bg-white font-semibold rounded-md text-[--primary-color] mr-6 border-2 border-[--primary-color]" onClick={() => setFillSuccess(false)}>Back</button>
+                                <button className="w-36 h-10 text-white font-semibold rounded-md bg-[--primary-color] mr-6" onClick={() => setFillSuccess(true)}>{fillSuccess ? 'Submit' : 'Next'}</button>
+                            </div>
                         </div>
                     }
                 </div>
