@@ -52,8 +52,11 @@ const handleDataDosen = () => {
                                 )
                             })}
                         </div>
-                        <div className="w-full flex items-center justify-center"> 
+                        <div className="w-[75%] my-10 font-['Poppins'] text-[--primary-color] bg-white rounded-md shadow-[0px_0px_7px_-4px_black] flex flex-col h-full items-center"> 
                             {services == 'Pendataan MBKM' ? <Pendataan Judul={'Pendataan MBKM'} Singkatan={'Merdeka Belajar Kampus Merdeka'}/> : <Pendataan Judul={'Laporan Akhir MBKM'} Singkatan={'Merdeka Belajar Kampus Merdeka'}/>}
+                            <div className="w-[90%] flex  justify-end mt-6">
+                                <button className="bg-[--primary-color] w-40 text-xl rounded-md my-6 h-12 text-white">Kirim</button>
+                            </div>
                         </div>
             </div>
         </div>
