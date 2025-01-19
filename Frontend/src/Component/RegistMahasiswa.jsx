@@ -30,7 +30,7 @@ const RegistMahasiswa = ({additional}) => {
                     </div>
                     <div className="flex flex-col w-full h-full justify-start items-center mt-4">
                         <label className="text-start w-[90%] font-semibold text-md ml-2">Nama Lengkap</label>
-                        <input placeholder="Contoh: Luthfie Arsya Darmaputra" maxLength={8} className="w-[90%] h-10  p-2 border border-black rounded-md"/>
+                        <input placeholder="Contoh: Luthfie Arsya Darmaputra" className="w-[90%] h-10  p-2 border border-black rounded-md"/>
                     </div>
                     <div className="flex flex-col w-full h-full justify-start items-center mt-4">
                         <label className="text-start w-[90%] font-semibold text-md ml-2">Tanggal Lahir</label>
@@ -38,7 +38,7 @@ const RegistMahasiswa = ({additional}) => {
                     </div>
                     <div className="flex flex-col w-full h-full justify-start items-center mt-4">
                         <label className="text-start w-[90%] font-semibold text-md ml-2">No Handphone</label>
-                        <input  placeholder="Contoh: 08577401300" maxLength={8} className="w-[90%] h-10  p-2 border border-black rounded-md"/>
+                        <input  placeholder="Contoh: 08577401300" maxLength={13} className="w-[90%] h-10  p-2 border border-black rounded-md"/>
                     </div>
                 </motion.div>
             ) : (
