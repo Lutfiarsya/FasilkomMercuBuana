@@ -6,10 +6,13 @@ import CP from '../Assets/Icons Services/file-managament.png'
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import Button from "../Component/Button"
+import { ThirdButton } from "../Component/ButtonGroup"
+import BimbinganPage from "../Component/Bimbingan"
 
 const MahasiswaPage = ({profile, home}) => {
 const navigate = useNavigate()
 const [services, setServices] = useState('MBKM')
+const [bimbingan,setBimbingan] = useState(false)
 
 const handleClick = (item) => {
     setServices(item)
@@ -137,12 +140,13 @@ const handleProfile = () => {
                             <td>{items.program}</td>
                             <td>{items.Dosen}</td>
                             <td>{items.status}</td>
-                            <td><Button require={items.bimbingan}/></td>
+                            <td><ThirdButton text={'Bimbingan'} functionButton={(e) => setBimbingan(true)}/></td>
                         </tr>
                         )
                     })}
                 </tbody>
             </table>
+                    {bimbingan ? <BimbinganPage setClose={(e) => setBimbingan(false)}/> : null}
                 </div>
                 </div>
             </div>
