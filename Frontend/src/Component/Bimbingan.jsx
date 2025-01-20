@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react"
+import Icons from "./Icons"
+import { PrimaryButton, SecondaryButton } from "./ButtonGroup"
 
 const day = {
     'Minggu' : 0,
@@ -60,10 +62,17 @@ const handleClick = () => {
 }
 
     return(
-        <div className="fixed top-0 left-0 font-['Poppins'] right-0 bottom-0 bg-black bg-opacity-50 z-20">
-        <div className="top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white text-[--primary-color] flex flex-col font-['Poppins'] relative font-regular rounded-md w-[600px] h-[600px] z-30 p-4">
-            <h1 className="text-3xl font-semibold mt-2">Pengajuan Bimbingan</h1>
-            <div className="w-full p-2 mt-8  flex flex-col justify-start items-start">
+        <div className="fixed top-0 left-0 font-['Poppins'] right-0 bottom-0 bg-black bg-opacity-70 z-20">
+        <div className="top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white text-[--primary-color] flex flex-col font-['Poppins'] relative font-regular rounded-md w-[600px] h-[600px] z-30">
+        <div className="w-full  flex justify-between h-24 items-center flex-row  rounded-tr-md rounded-bl-md">
+            <div className="flex items-center pb-4 justify-center w-36 h-24">
+                <Icons width={60} height={60}/>
+            </div>
+            <div className="w-[80%] justify-center items-center h-24 rounded-bl-3xl bg-[--primary-color] flex">
+                <h1 className="text-3xl font-semibold m-auto text-white">Pengajuan Bimbingan</h1>
+            </div>
+        </div>
+            <div className="w-full p-2 mt-8  flex flex-col justify-start items-start px-4">
                 <label>Nama Lengkap</label>
                 <input className="w-full h-8 rounded-md text-black text-md px-2 border border-gray-400"/>
 
@@ -85,11 +94,11 @@ const handleClick = () => {
                 </select>
 
                 <label className="mt-4">Keterangan Tambahan</label>
-                <textarea className="w-full p-2 h-40 rounded-md text-black text-start text-sm px-2 border border-gray-400"/>
+                <textarea className="w-full p-2 h-32 rounded-md text-black text-start text-sm px-2 border border-gray-400"/>
             </div>
             <div className="flex flex-row w-[60%] fixed bottom-4 right-0 justify-evenly">
-                <button onClick={() => setClose(false)} className="w-36 h-10 bg-[--primary-color] text-white rounded-md hover:scale-110 hover:cursor-pointer transition-all transform">Batal</button>
-                <button onClick={handleClick} className="w-36 h-10 bg-[#06D001] text-white rounded-md hover:scale-110 hover:cursor-pointer transition-all transform">Ajukan</button>
+                <SecondaryButton text={'Batal'} functionButton={setClose} width={'40%'} height={'10'}/>
+                <PrimaryButton text={'Kirim'} type="submit" functionButton={handleClick} width={'40%'} height={'10'}/>
             </div>
         </div>
         </div>
