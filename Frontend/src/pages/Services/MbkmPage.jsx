@@ -4,6 +4,7 @@ import Navbar from "../../Component/Navbar"
 import Panduan from "../../Component/Panduan"
 import { useNavigate } from "react-router-dom"
 import Pendataan from "../../Component/Form/MBKM/Pendataan"
+import { PrimaryButton } from "../../Component/ButtonGroup"
 
 const PageMBKM = () => {
 const [open, setOpen] = useState(false)
@@ -34,9 +35,9 @@ const handleDataDosen = () => {
                     <Panduan setClose={setOpen}/> 
                 </div>
                 :  
-                <div className="flex w-[50%] text-[14px]  flex-row justify-between text-white font-regular">
-                    <button className="hover:scale-110 hover:cursor-pointer transition-all transform w-60 h-12 px-4 rounded-md bg-[--primary-color]" onClick={handleClick}>Baca Panduan pengisian Formulir</button> 
-                    <button className="hover:scale-110 hover:cursor-pointer transition-all transform w-60 h-12 px-4 rounded-md bg-[--primary-color]" onClick={handleDataDosen}>Data Dosen</button> 
+                <div className="flex w-[35%] text-[14px]  flex-row justify-between text-white font-regular">
+                    <PrimaryButton text={'Panduan Pengisian Form'} functionButton={handleClick} width={'320px'} height={'10'}/>
+                    <PrimaryButton text={'Detail Dosen'} functionButton={handleDataDosen} width={'145px'} height={'10'}/>
                 </div>
             }
             </div>    
