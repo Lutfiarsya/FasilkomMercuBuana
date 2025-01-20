@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
-import logo from '../Assets/MercuIcons.png'
 import CountDown from '../Utilities/CountDown'
+import Icons from './Icons'
+import { PrimaryButton, SecondaryButton } from './ButtonGroup'
 
 
 const EmailVerify = ({valueGmail, setVerifyGmail, code, validateCode}) => {
@@ -34,13 +35,7 @@ const handleClick = () => {
 }
     return(
         <div className='flex flex-col w-full h-full items-center'>
-            <div className='mt-4 w-18 h-18 rounded-full bg-white border-gray- border-4 p-2'>
-             <img
-             src={logo}
-             width={50}
-             height={50}
-                />
-            </div>
+            <Icons width={50} height={50}/>
             <div className='flex flex-col w-full mt-4'>
                 <h1 className='font-semibold text-3xl'>Please Check Your Gmail</h1>
                 <p className="italic text-[12px]">we've send code to {valueGmail}</p>
@@ -61,9 +56,9 @@ const handleClick = () => {
                     )
                 })}
             </div>
-            <div className='w-[80%] flex flex-row justify-between mt-4 p-4'>
-                <button className='w-44 bg-white text-[--primary-color] rounded-md shadow-sm shadow-[--primary-color] h-10' onClick={handleBack}>Back</button>
-                <button className='w-44 bg-[--primary-color] text-white rounded-md shadow-sm shadow-black h-10' onClick={handleClick}>Verify Code</button>
+            <div className='w-[70%] flex flex-row justify-between mt-4 p-4'>
+                <SecondaryButton text={'Back'} functionButton={handleBack} width={'45%'} height={'10'} style={'border-2 border-[--primary-color]'}/>
+                <PrimaryButton text={'Verify Code'} style={'text-sm'}  functionButton={handleVerifyCode} width={'45%'} height={'10'}/>
             </div>
             <div className='w-[45%] mt-4 text-sm flex flex-row items-center justify-around'>
                 <p>Didn't recieve an email? </p>
