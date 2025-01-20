@@ -5,6 +5,7 @@ import RegistMahasiswa from "../Component/RegistMahasiswa"
 import logoMercu from '../Assets/MercuIcons.png'
 import ProgressTracking from "../Utilities/ProgressTracking"
 import RegistDosen from "../Component/RegistDosen"
+import { PrimaryButton } from "../Component/ButtonGroup"
 
 const Register = () =>{
 const [gmailVerify, setGmailVerify] = useState('')
@@ -63,9 +64,7 @@ const slideVariantsExit = {
                          onChange={(e) => setGmailVerify(e.target.value)}
                          value={gmailVerify}
                         />
-                        <button className="text-sm w-[80%] mt-4 rounded-md h-10 p-2  bg-[--primary-color] text-white"
-                        onClick={handleVerify}
-                        >Verify Gmail</button>
+                        <PrimaryButton functionButton={handleVerify} text={'Verify Gmail'} width={'80%'} height={'10'} style={'text-sm mt-4'}/>
                         </div>
                         </motion.div>    
                     </motion.div> 
