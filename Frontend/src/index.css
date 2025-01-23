@@ -8,8 +8,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    --swiper-navigation-color: white;
-    
 }
 
 table{
@@ -20,8 +18,10 @@ select{
     appearance: none;
 }
 
+
 body{
-    overflow-y: hidden;
+    overflow-y: visible;
+    height: 100vh;
 }
 
 
