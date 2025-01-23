@@ -97,8 +97,8 @@ const handleClick = () => {
                 <textarea className="w-full p-2 h-32 rounded-md text-black text-start text-sm px-2 border border-gray-400"/>
             </div>
             <div className="flex flex-row w-[60%] fixed bottom-4 right-0 justify-evenly">
-                <SecondaryButton text={'Batal'} functionButton={setClose} width={'40%'} height={'10'}/>
-                <PrimaryButton text={'Kirim'} type="submit" functionButton={handleClick} width={'40%'} height={'10'}/>
+                <SecondaryButton text={'Batal'} functionButton={setClose} width={'40%'} height={'10'} style={'border border-[--primary-color]'}/>
+                <PrimaryButton text={'Kirim'} type="submit" functionButton={handleClick} width={'40%'} height={'10'} style={'rounded-md'}/>
             </div>
         </div>
         </div>
