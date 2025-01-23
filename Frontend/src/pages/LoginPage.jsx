@@ -47,7 +47,7 @@ const handleClick = (event) => {
 }
 
     return(
-        <div className="flex flex-row w-full h-[630px] m-auto  items-center justify-between relative">
+        <div className="flex flex-row w-full h-[100vh] m-auto  items-center justify-between relative">
             <img
             src={Logo}
             width={200}
@@ -72,7 +72,7 @@ const handleClick = (event) => {
                 <button className="italic text-xs font-['Poppins'] absolute h-1 bottom-0  text-[--secondary-color] right-0">forget password?</button>
               </div>
               <div className="w-[70%] h-72 flex flex-col items-center justify-evenly">
-                <PrimaryButton text={'Login'} width={'400px'} height={'16'} functionButton={handleClick} style={"text-2xl font-['Poppins'] font-semibold"}/>
+                <PrimaryButton text={'Login'} width={'400px'} height={'16'} functionButton={handleClick} style={"text-2xl font-['Poppins'] font-semibold rounded-md"}/>
                 <SecondaryButton text={'Register'} width={'400px'} height={'16'} functionButton={() => navigate('/register')} style={"text-2xl font-['Poppins'] font-semibold border border-[--primary-color]"}/>
               </div>
 
