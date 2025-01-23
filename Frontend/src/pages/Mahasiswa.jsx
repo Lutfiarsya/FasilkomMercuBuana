@@ -5,7 +5,6 @@ import TA from '../Assets/Icons Services/start-up.png'
 import CP from '../Assets/Icons Services/file-managament.png'
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
-import Button from "../Component/Button"
 import { ThirdButton } from "../Component/ButtonGroup"
 import BimbinganPage from "../Component/Bimbingan"
 
@@ -140,7 +139,7 @@ const handleProfile = () => {
                             <td>{items.program}</td>
                             <td>{items.Dosen}</td>
                             <td>{items.status}</td>
-                            <td><ThirdButton text={'Bimbingan'} functionButton={(e) => setBimbingan(true)}/></td>
+                            <td><ThirdButton text={'Bimbingan'} functionButton={(e) => setBimbingan(true)} width={'100px'} style={"px-4 text-[14px]"} height={'8'}/></td>
                         </tr>
                         )
                     })}
