@@ -58,7 +58,7 @@ const handleClick = () => {
             </div>
             <div className='w-[70%] flex flex-row justify-between mt-4 p-4'>
                 <SecondaryButton text={'Back'} functionButton={handleBack} width={'45%'} height={'10'} style={'border-2 border-[--primary-color]'}/>
-                <PrimaryButton text={'Verify Code'} style={'text-sm'}  functionButton={handleVerifyCode} width={'45%'} height={'10'}/>
+                <PrimaryButton text={'Verify Code'} style={'text-sm rounded-md'}  functionButton={handleClick} width={'45%'} height={'10'}/>
             </div>
             <div className='w-[45%] mt-4 text-sm flex flex-row items-center justify-around'>
                 <p>Didn't recieve an email? </p>
