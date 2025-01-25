@@ -1,6 +1,5 @@
 import './index.css'
 import MahasiswaPage from './pages/Mahasiswa';
-import AdminPage from './pages/AdminPage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Protected from './tools/protected';
 import LoginPage from './pages/LoginPage';
@@ -16,9 +15,12 @@ import PageTugasAkhir from './pages/Services/TugasAkhirPage';
 import PageKerjaPraktik from './pages/Services/KerjaPraktikPage';
 import Register from './pages/RegisterPage';
 import CaptionProjectPage from './pages/Services/CPPage';
+import Dashboard from './Admin/Dashboard';
+import AdminPage from './pages/AdminPage';
 
 function App() {
 const[IsLogin, setIsLogin] = useState(null)
+const [isSideBar, setIsSideBar] = useState(false)
 const userAccess = JSON.parse(process.env.REACT_APP_USERS);
 const admin = userAccess.admin
 const mahasiswa = userAccess.mahasiswa
@@ -32,20 +34,18 @@ const dosen = userAccess.dosen
           <Route path='/register' element={<Register/>}/>
           <Route path='/admin' element={
             <Protected IsLogin={IsLogin}>
-              <AdminPage />
+              <AdminPage isSidebar={isSideBar} setIsSidebar={setIsSideBar}/>
             </Protected>
-            }/>
+            }>
+              <Route index element={<Dashboard isSidebar={isSideBar}/>}/>
+              <Route path='details' element={<DetailsPage/>}/>
+            </Route>
           <Route path='/mahasiswa' element={
             <Protected IsLogin={IsLogin}>
               <MahasiswaPage  />
             </Protected>
             }/>
             <Route path='/errorPage' element={<FailedReqPage/>}/>
-            <Route path='/admin/details' element={
-            <Protected IsLogin={IsLogin}>
-              <DetailsPage />
-            </Protected>
-            }/>
             <Route path='/mahasiswa/form-MBKM' element={
             <Protected IsLogin={IsLogin}>
               <PageMBKM />
