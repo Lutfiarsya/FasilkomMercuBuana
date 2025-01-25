@@ -88,8 +88,7 @@ const filteredData = data.filter((items) =>
     );
     const selectedData = filteredData[0][services]
     return(
-        <div className="font-['Poppins']">
-            <Navbar/>
+        <div className="font-['Poppins'] w-full h-full">
             <div className="w-full h-[200px] flex flex-col items-center justify-between mt-8">
                 <div className="flex flex-col w-full">
                     <House size={25} weight="fill" color='var(--primary-color)' onClick={ClickNavigate} className="absolute  right-6 top-[72px] hover:cursor-pointer"/>
