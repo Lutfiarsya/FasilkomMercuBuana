@@ -42,12 +42,13 @@ const PieChart = () => {
                     position: 'bottom',
                     labels:{
                         usePointStyle: true, //ini ngubah jadi titik
-                        color: 'white',
+                        color: `#003E7B`,
                         boxHeight: 15,
-                        boxWidth: 15,
-                        padding: 25,
+                        boxWidth: 25,
+                        padding: 15,
                         font:{
-                            size: 10,
+                            size: 8,
+                            weight: 'bold'
                         },
                     },    
                 },
@@ -69,8 +70,8 @@ const PieChart = () => {
                 }
             },
         }}
-        width={200}
-        height={200}
+        width={100}
+        height={100}
       />    
     )
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-const RandomizeCount = ({target, duration}) => {
+const RandomizeCount = ({target, duration, className}) => {
 const [effectRandom, setEffectRandom] = useState(0);
 const [targetNumber, setTargetNumber] = useState(false);
 
@@ -30,7 +30,7 @@ useEffect(() => {
 
     return(
         <div>
-            <h1 className="text-white text-4xl font-semibold font-['Poppins']">
+            <h1 className={`${className}`}>
             {targetNumber ? target : effectRandom}
             </h1>
         </div>
